@@ -1,0 +1,2 @@
+::sysinit:/etc/init.d/rcS
+::once:/bin/sh -c 'cat /etc/motd; setsid cttyhack setuidgid 0 /bin/sh; poweroff'

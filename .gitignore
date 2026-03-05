@@ -1,0 +1,16 @@
+*
+
+!.gitignore
+!Makefile
+!initramfs
+!initramfs/bin
+!initramfs/lib
+!initramfs/etc
+!initramfs/etc/**
+
+!kernelbuild
+
+!modules
+!modules/templates
+!modules/templates/**
+!modules/Makefile
