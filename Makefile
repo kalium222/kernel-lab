@@ -14,7 +14,7 @@ boot:
 	qemu-system-x86_64 $(QEMU_OPTS)
 
 initramfs: install_module
-	cd initramfs && find . | cpio -o -H newc --owner=+0:+0 > ../initramfs.cpio
+	cd initramfs && find . ! -name ".gitkeep" | cpio -o -H newc --owner=+0:+0 > ../initramfs.cpio
 
 install_module:
 	cp ./modules/skels/build/*.ko ./initramfs/lib/modules/
