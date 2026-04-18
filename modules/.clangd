@@ -1,0 +1,17 @@
+CompileFlags:
+  Remove: [
+    -mpreferred-stack-boundary=*,
+    -mindirect-branch=*,
+    -mindirect-branch-register,
+    -fno-allow-store-data-races,
+    -fzero-init-padding-bits=*,
+    -fmin-function-alignment=*,
+    -fconserve-stack,
+    -mskip-rax-setup,
+    -mno-fp-ret-in-387,
+    -mrecord-mcount,
+    -falign-jumps=*,
+    -fno-ipa-rref,
+    -fplugin=*,
+    -fplugin-arg-*
+  ]

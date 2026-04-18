@@ -9,6 +9,7 @@
 !initramfs/etc/**
 !modules/templates/**
 !modules/Makefile
+!modules/.clangd
 
 # ignore the linux source tree
 kernelbuild/*/
