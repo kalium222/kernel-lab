@@ -12,7 +12,7 @@ help:
 
 skels:
 	mkdir -p skels
-	cd templates/$(LAB) && ls | xargs ../../generate_skels.py --output ../../../skels/ --todo $(TODO)
+	cd templates/$(LAB) && find . -type f | xargs ../../generate_skels.py --output ../../../skels/ --todo $(TODO)
 
 build:
 	make -f $(KMAKEFILE) M=`pwd`/skels MO=`pwd`/skels/build/ modules
@@ -20,5 +20,5 @@ build:
 clean:
 	make -f $(KMAKEFILE) M=`pwd`/skels/ MO=`pwd`/skels/build/ clean
 
-clear:
+clean_skels:
 	rm -rf ./skels/

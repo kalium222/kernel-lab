@@ -1,0 +1,7 @@
+#!/bin/sh
+device="my_device"
+major=42
+
+
+rm -f /dev/${device}
+mknod /dev/${device} c $major 0
