@@ -3,6 +3,8 @@ KMAKEFILE ?= $(shell realpath ../kernelbuild/linux-7.0-rc1/Makefile)
 LAB ?= fuck
 TODO ?= 0
 
+BUILD_DIR := $(shell pwd)/skels/build
+
 .PHONY: skels
 
 help:
@@ -12,13 +14,17 @@ help:
 
 skels:
 	mkdir -p skels
-	cd templates/$(LAB) && find . -type f | xargs ../../generate_skels.py --output ../../../skels/ --todo $(TODO)
+	cd templates && find $(LAB) -type f | xargs ./generate_skels.py --output ../skels --todo $(TODO)
 
 build:
-	make -f $(KMAKEFILE) M=`pwd`/skels MO=`pwd`/skels/build/ modules
+	@for i in $(shell find skels -name Kbuild | xargs -r dirname); do \
+		make -f $(KMAKEFILE) M=$$i MO=$(BUILD_DIR) modules; \
+	done
 
 clean:
-	make -f $(KMAKEFILE) M=`pwd`/skels/ MO=`pwd`/skels/build/ clean
+	@for i in $(shell find skels -name Kbuild | xargs -r dirname); do \
+		make -f $(KMAKEFILE) M=$$i MO=$(BUILD_DIR) clean; \
+	done
 
 clean_skels:
-	rm -rf ./skels/
+	rm -rf skels
