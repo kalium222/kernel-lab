@@ -7,7 +7,7 @@ TODO ?= 0
 
 help:
 	@echo "usage: LAB=lab/exersize make skels"
-	@echo "example: LAB=kernel-modules/5-oops-mod make skels"
+	@echo "example: LAB=kernel_modules/5-oops-mod make skels"
 	@echo "make build to build the module"
 
 skels:
