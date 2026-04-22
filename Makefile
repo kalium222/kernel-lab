@@ -2,13 +2,22 @@ KERNEL_IMAGE = ./kernelbuild/linux-7.0-rc1/arch/x86/boot/bzImage
 KERNEL_BINARY = ./kernelbuild/linux-7.0-rc1/vmlinux
 INITRAMFS = ./initramfs.cpio
 
+GRAPHIC ?= 0
+ifeq ($(GRAPHIC),0)
+    DISPLAY_OPTS = -nographic
+    CONSOLE_OPTS = console=ttyS0
+else
+    DISPLAY_OPTS =
+    CONSOLE_OPTS =
+endif
+
 QEMU_OPTS = -enable-kvm \
-		-nographic \
 		-m 128M \
 		-s \
 		-kernel $(KERNEL_IMAGE) \
 		-initrd $(INITRAMFS) \
-		-append "console=ttyS0 nokaslr quiet"
+		$(DISPLAY_OPTS) \
+		-append "$(CONSOLE_OPTS) nokaslr quiet"
 
 boot:
 	qemu-system-x86_64 $(QEMU_OPTS)
