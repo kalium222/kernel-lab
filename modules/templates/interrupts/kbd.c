@@ -112,7 +112,7 @@ static inline u8 i8042_read_data(void)
 }
 
 /* TODO 2/27: implement interrupt handler */
-irqreturn_t kbd_interrupt_handle(int irq_no, void *dev_id)
+static irqreturn_t kbd_interrupt_handle(int irq_no, void *dev_id)
 {
 
 	unsigned int scancode = 0;
