@@ -5,6 +5,7 @@
 !**/.gitkeep
 !.gitignore
 !Makefile
+!README.md
 
 !initramfs/etc/**
 !modules/templates/**
